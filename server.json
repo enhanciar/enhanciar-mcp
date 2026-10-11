@@ -1,0 +1,129 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "in.enhanciar/enhanciar",
+  "title": "Enhanciar — company brain",
+  "description": "Ask your company brain from any MCP client. Cited answers from Slack, Gmail, Notion, Drive, GitHub.",
+  "version": "1.0.3",
+  "websiteUrl": "https://enhanciar.in",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://enhanciar.in/enhanciar/mcp/",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer dh_<api-key>. Create a key in the Enhanciar app (Settings → API keys). Paid plans; bring your own AI key.",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "src": "https://enhanciar.in/apple-touch-icon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "180x180"
+      ]
+    },
+    {
+      "src": "https://enhanciar.in/favicon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ]
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "about": "Enhanciar is a company brain for every team. It reads your Slack, Gmail, Google Drive, Notion, Jira, Linear, GitHub, Zendesk and Postgres, answers any question with a link to every source, then drafts the follow-up (reply, ticket, doc, Slack post or calendar event) and waits for a person to approve it. From an MCP client you can ask cited questions, search and read the wiki, run impact analysis on code, and propose actions into the same approval queue your team sees in the app.",
+      "tools": [
+        {
+          "name": "query",
+          "description": "Ask a natural-language question; returns a synthesised answer with citations to code, Slack, docs."
+        },
+        {
+          "name": "search_wiki",
+          "description": "Search the team's generated wiki pages."
+        },
+        {
+          "name": "get_page",
+          "description": "Read the full markdown of one wiki page."
+        },
+        {
+          "name": "list_pages",
+          "description": "List every wiki page the caller can see."
+        },
+        {
+          "name": "get_graph",
+          "description": "Entity/community graph manifest for the workspace."
+        },
+        {
+          "name": "impact",
+          "description": "Blast radius of changing a file, function or module."
+        },
+        {
+          "name": "list_repos",
+          "description": "Repos the workspace has ingested."
+        },
+        {
+          "name": "get_process_map",
+          "description": "How a process actually runs across code, people and tools."
+        },
+        {
+          "name": "list_skills",
+          "description": "Reusable skills distilled from the codebase."
+        },
+        {
+          "name": "propose_action",
+          "description": "Draft a Jira/Linear/Slack/calendar action for human approval."
+        },
+        {
+          "name": "get_skill",
+          "description": "Read one distilled skill."
+        },
+        {
+          "name": "list_proposed_actions",
+          "description": "Actions awaiting human approval."
+        }
+      ],
+      "sources": [
+        "Slack",
+        "Gmail",
+        "Google Drive / Docs",
+        "Notion",
+        "Jira",
+        "Linear",
+        "GitHub",
+        "Zendesk",
+        "Postgres",
+        "PDF"
+      ],
+      "clients": [
+        "Claude Desktop",
+        "Claude Code",
+        "Cursor",
+        "Cline",
+        "Continue",
+        "any streamable-HTTP MCP client"
+      ],
+      "categories": [
+        "knowledge-base",
+        "productivity",
+        "team-collaboration",
+        "developer-tools",
+        "documentation"
+      ],
+      "pricing": "Paid. Solo $24/mo, Team $100/mo, Enterprise custom. Bring your own AI key (Gemini, OpenAI or Anthropic).",
+      "auth": "Authorization: Bearer dh_<key> — keys minted in the Enhanciar app (Settings → API keys).",
+      "status": "generally-available",
+      "docs": "https://enhanciar.in/mcp",
+      "featureCatalog": "https://enhanciar.in/features"
+    }
+  },
+  "repository": {
+    "url": "https://github.com/enhanciar/enhanciar-mcp",
+    "source": "github"
+  }
+}
