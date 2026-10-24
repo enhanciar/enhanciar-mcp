@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "in.enhanciar/enhanciar",
   "title": "Enhanciar — company brain",
-  "description": "Ask your company brain from any MCP client. Cited answers from Slack, Gmail, Notion, Drive, GitHub.",
-  "version": "1.0.3",
+  "description": "Ask your company's Slack, Gmail, Drive, Notion, Jira and code from any MCP client, with sources.",
+  "version": "1.0.5",
   "websiteUrl": "https://enhanciar.in",
   "remotes": [
     {
@@ -12,7 +12,7 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer dh_<api-key>. Create a key in the Enhanciar app (Settings → API keys). Paid plans; bring your own AI key.",
+          "description": "Bearer dh_<api-key>. Create a key in Enhanciar (Settings → API keys). Plans at https://enhanciar.in/pricing",
           "isRequired": true,
           "isSecret": true
         }
@@ -37,55 +37,55 @@
   ],
   "_meta": {
     "io.modelcontextprotocol.registry/publisher-provided": {
-      "about": "Enhanciar is a company brain for every team. It reads your Slack, Gmail, Google Drive, Notion, Jira, Linear, GitHub, Zendesk and Postgres, answers any question with a link to every source, then drafts the follow-up (reply, ticket, doc, Slack post or calendar event) and waits for a person to approve it. From an MCP client you can ask cited questions, search and read the wiki, run impact analysis on code, and propose actions into the same approval queue your team sees in the app.",
+      "about": "Enhanciar is a company brain for your whole team. Ask anything about your company in plain English and get the answer with a link to the source: it reads Slack, Gmail, Google Drive, Notion, Confluence, Jira, Linear, Zendesk, GitHub, databases and PDFs. Then hand it the follow-up: it drafts the reply, ticket, doc or calendar hold and waits for a person to approve. It also reviews pull requests and runs impact analysis (what breaks if this changes). Use it in the web app, in Slack, or from Claude, Cursor and any MCP client.",
       "tools": [
         {
           "name": "query",
-          "description": "Ask a natural-language question; returns a synthesised answer with citations to code, Slack, docs."
+          "description": "Answer a plain-English question about the company, with sources. Start here; it costs AI tokens on your own key. Use search_wiki + get_page for exact page text."
         },
         {
           "name": "search_wiki",
-          "description": "Search the team's generated wiki pages."
+          "description": "Find wiki pages containing a word or phrase. Exact match, no AI tokens. Returns name, title and a snippet for each hit (limit 1-50, default 20)."
         },
         {
           "name": "get_page",
-          "description": "Read the full markdown of one wiki page."
+          "description": "Read the full Markdown of one wiki page, by category + name or a path like concepts/billing-flow, from search_wiki or list_pages."
         },
         {
           "name": "list_pages",
-          "description": "List every wiki page the caller can see."
+          "description": "List every wiki page you can see (category, name, title). For a topic use search_wiki; for a question use query."
         },
         {
           "name": "get_graph",
-          "description": "Entity/community graph manifest for the workspace."
+          "description": "The workspace's knowledge graph: topics, links and clusters, for the big picture rather than page content."
         },
         {
           "name": "impact",
-          "description": "Blast radius of changing a file, function or module."
+          "description": "What else breaks or needs retesting if you change a file or function: callers, callees, affected files and tests (depth default 2)."
         },
         {
           "name": "list_repos",
-          "description": "Repos the workspace has ingested."
+          "description": "The code repos ingested into the workspace, with branch and last ingest time. Check before asking about code."
         },
         {
           "name": "get_process_map",
-          "description": "How a process actually runs across code, people and tools."
+          "description": "Map of how the company works: procedures, the tools they use (GitHub, Slack, Jira) and the docs behind them."
         },
         {
           "name": "list_skills",
-          "description": "Reusable skills distilled from the codebase."
+          "description": "List the team's recurring procedures (skills) Enhanciar wrote up; read one with get_skill."
         },
         {
           "name": "propose_action",
-          "description": "Draft a Jira/Linear/Slack/calendar action for human approval."
+          "description": "File a Jira, Linear or GitHub issue, Slack message, calendar hold, Gmail draft (never sent), Notion page or Zendesk note for a person to approve. Nothing runs until they do."
         },
         {
           "name": "get_skill",
-          "description": "Read one distilled skill."
+          "description": "Read the full steps of one skill by its name from list_skills."
         },
         {
           "name": "list_proposed_actions",
-          "description": "Actions awaiting human approval."
+          "description": "The approval queue: actions waiting for a person, or already done. Filter by status. Read-only; check it before proposing to avoid duplicates."
         }
       ],
       "sources": [
@@ -93,11 +93,12 @@
         "Gmail",
         "Google Drive / Docs",
         "Notion",
+        "Confluence",
         "Jira",
         "Linear",
-        "GitHub",
         "Zendesk",
-        "Postgres",
+        "GitHub",
+        "Databases",
         "PDF"
       ],
       "clients": [
@@ -110,20 +111,17 @@
       ],
       "categories": [
         "knowledge-base",
-        "productivity",
+        "enterprise-search",
         "team-collaboration",
         "developer-tools",
         "documentation"
       ],
-      "pricing": "Paid. Solo $24/mo, Team $100/mo, Enterprise custom. Bring your own AI key (Gemini, OpenAI or Anthropic).",
+      "pricing": "Paid plans: Solo $24/month, Team $100/month for up to 10 people, Enterprise custom. Monthly billing. Bring your own AI key with zero markup.",
       "auth": "Authorization: Bearer dh_<key> — keys minted in the Enhanciar app (Settings → API keys).",
-      "status": "generally-available",
-      "docs": "https://enhanciar.in/mcp",
-      "featureCatalog": "https://enhanciar.in/features"
+      "status": "live",
+      "docs": "https://enhanciar.in/docs",
+      "featureCatalog": "https://enhanciar.in/features",
+      "pricingUrl": "https://enhanciar.in/pricing"
     }
-  },
-  "repository": {
-    "url": "https://github.com/enhanciar/enhanciar-mcp",
-    "source": "github"
   }
 }
