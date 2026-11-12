@@ -3,7 +3,7 @@
   "name": "in.enhanciar/enhanciar",
   "title": "Enhanciar — company brain",
   "description": "Ask your company's Slack, Gmail, Drive, Notion, Jira and code from any MCP client, with sources.",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "websiteUrl": "https://enhanciar.in",
   "remotes": [
     {
@@ -116,7 +116,7 @@
         "developer-tools",
         "documentation"
       ],
-      "pricing": "Paid plans: Solo $24/month, Team $100/month for up to 10 people, Enterprise custom. Monthly billing. Bring your own AI key with zero markup.",
+      "pricing": "Paid plans: $35 per person a month, or $315 per person a year paid once. Enterprise custom. Bring your own AI key with zero markup.",
       "auth": "Authorization: Bearer dh_<key> — keys minted in the Enhanciar app (Settings → API keys).",
       "status": "live",
       "docs": "https://enhanciar.in/docs",

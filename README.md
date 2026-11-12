@@ -21,7 +21,7 @@ This repo documents the **hosted remote MCP server**, so Claude, Cursor, VS Code
 
 ## Get an API key
 
-1. Sign in at https://enhanciar.in (paid plans: Solo $24/mo, Team $100/mo; you bring your own AI key).
+1. Sign in at https://enhanciar.in (paid plans: $35 per person a month, or $315 per person a year paid once; Enterprise custom; you bring your own AI key).
 2. Open **Settings → API keys** and create a key. It starts with `dh_`.
 3. **Settings → Connections** also has copy-paste snippets for each client with your key filled in.
 
